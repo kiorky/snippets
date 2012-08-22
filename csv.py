@@ -3,10 +3,6 @@
 __docformat__ = 'restructuredtext en'
 
 import csv
-import logging
-
-__log__ = logging.getLogger('export')
-
 class csv_dialect(csv.Dialect):
     delimiter = ','
     quotechar = '"'
@@ -16,7 +12,6 @@ class csv_dialect(csv.Dialect):
     quoting = csv.QUOTE_ALL
 
 def runcsv(self, output):
-    __log__.debug('Start CSV export')
     rows = []
     titles = []
     output_filename = '%s.csv' % output
@@ -34,7 +29,6 @@ def runcsv(self, output):
     csvwriter.writerows(rows)
     fic.flush()
     fic.close()
-    __log__.info('End CSV export, output is in %s' % output_filename)
 
 
 # vim:set et sts=4 ts=4 tw=80:
